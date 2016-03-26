@@ -1,1 +1,1 @@
-web: python smarthub/smarthub.py
+web: python smarthub.py
