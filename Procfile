@@ -1,1 +1,1 @@
-web: python smarthub.py
+web: gunicorn <smarthub>:smarthub

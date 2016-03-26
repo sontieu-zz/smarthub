@@ -93,5 +93,5 @@ def show_devices():
     return render_template('show_devices.html')
 
 if __name__ == '__main__':
-    app.run(host='107.21.238.17',debug=False)
+    app.run(host='0.0.0.0',debug=False)
 
