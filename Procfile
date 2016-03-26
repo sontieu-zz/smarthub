@@ -1,1 +1,1 @@
-web: python dealscraper/hello.py
+web: python smarthub/smarthub.py
