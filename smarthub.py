@@ -17,6 +17,7 @@ TYPE_DEVICE = ["LED"]
 # create our little application :)
 app = Flask(__name__)
 app.config.from_object(__name__)
+
 '''
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
@@ -25,7 +26,8 @@ def init_db():
     with closing(connect_db()) as db:
         with app.open_resource('schema.sql', mode='r') as f:
             db.cursor().executescript(f.read())
-        db.commit() 
+        db.commit()    
+
 @app.before_request
 def before_request():
     g.db = connect_db()
@@ -80,9 +82,7 @@ def detail_device(device_id):
 
 @app.route('/save', methods=['POST'])
 def save_config():
-    data = request.form['feature']
-    flash('data = ' + data)
-    data = data.split('_')
+    data = request.form['feature'].split('_')
     flash('status = ' + data[0] + ' id = ' + data[1])
     g.db.execute('insert into services (status, device_id) valueS (?,?)', [data[0], data[1]])
     g.db.commit()
@@ -92,7 +92,6 @@ def save_config():
 def show_devices():
     return render_template('show_devices.html')
 
-
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',debug=False)
 
