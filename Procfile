@@ -1,1 +1,1 @@
-web: gunicorn <smarthub>:smarthub
+web: gunicorn app:app
