@@ -1,0 +1,12 @@
+<!doctype html>
+<title>SmartHub</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+<h1>SmartHub</h1>
+
+<ul class=entries>
+    <li> <a href="{{ url_for('detail', name='LED') }}"> LED </a></li>
+    <li> <a href="{{ url_for('detail', name='ALARM') }}"> ALARM </a></li>
+    <li> <a href="{{ url_for('detail', name='INDOOR') }}"> INDOOR </a></li>
+</ul>
+</div>

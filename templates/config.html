@@ -1,0 +1,29 @@
+<!doctype html>
+<title>SmartHub</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+<div class=entries>
+<h1><a href="{{ url_for('home') }}" style="text-decoration: none">SmartHub</a></h1><br/><br/>
+<form action="{{ url_for('configure') }}" method="post" class="add-entry">
+    <h2> {{ name }} </h2><br/>
+    Normal Feature:<select name="normal">
+        <option value="on" {% if normal == "on" %} selected {% endif %}>ON</option>
+        <option value="off" {% if normal == "off" %} selected {% endif %}>OFF</option>
+    </select>
+    <br/>
+    <br/>
+  {% if name == "LED" %}
+    Smart Feature:<select name="smart">
+        <option value="on" {% if smart == "on" %} selected {% endif %}>ON</option>
+        <option value="off" {% if smart == "off" %} selected {% endif %}>OFF</option>
+    </select>
+    <br/>
+    <br/>
+  {% elif name == "INDOOR" and normal == "on" %}
+    <a href="http://oobee-stg.geocomply.net:4000/manage/floor/map/11"> GO TO MAP </a><br/><br/>
+  {% endif %}
+  <input type="hidden" name="hidden_data" value="{{ name }}"/>
+  <input type="submit" value="Save"/>
+</form>
+</div>
+</div>
